@@ -3,6 +3,7 @@ My little Queue
 """
 from typing import Any
 
+deque_list = []  # очередь, слева направо
 
 def enqueue(elem: Any) -> None:
     """
