@@ -16,7 +16,10 @@ def enqueue(elem: Any, priority: int = 0) -> None:
     :return: Nothing
     """
     global priority_queue
-    priority_queue[priority].append(elem)
+    if priority in range(PRIORITY_NUMBER):
+        priority_queue[priority].append(elem)
+    else:
+        raise IndexError('No such priority in existing queue')
     return None
 
 def dequeue() -> Any:
@@ -40,7 +43,14 @@ def peek(ind: int = 0, priority: int = 0) -> Any:
     :return: peeked element
     """
     global priority_queue
-    return priority_queue[priority][ind]
+    if priority in range(PRIORITY_NUMBER):
+        if ind in range(len(priority_queue[priority])+1):
+            return priority_queue[priority][ind]
+        else:
+            raise IndexError('No element of such index in queue with such priority')
+    else:
+        raise IndexError('No such priority in existing queue')
+
 
 
 def clear() -> None:
