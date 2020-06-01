@@ -14,7 +14,4 @@ def check_brackets(brackets_row: str) -> bool:
                 l.pop()
             except IndexError:
                 return False
-    if 1 in l:
-        return False
-    else:
-        return True
+    return False if 1 in l else True
