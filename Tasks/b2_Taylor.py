@@ -2,7 +2,7 @@
 Taylor series
 """
 from typing import Union
-
+import math
 
 def ex(x: Union[int, float]) -> float:
     """
@@ -11,8 +11,16 @@ def ex(x: Union[int, float]) -> float:
     :param x: x value
     :return: e^x value
     """
-    print(x)
-    return 0
+    accuracy = 0.000000001
+    ex_ = 0
+    i = 0
+    while True:
+        elem_ = x ** i / math.factorial(i)
+        ex_ += elem_
+        i += 1
+        if elem_ < accuracy:
+            break
+    return ex_
 
 
 def sinx(x: Union[int, float]) -> float:
@@ -22,5 +30,15 @@ def sinx(x: Union[int, float]) -> float:
     :param x: x value
     :return: sin(x) value
     """
-    print(x)
-    return 0
+    accuracy = 0.0001
+    sinx_ = 0
+    i = 0
+    while True:
+        elem_ = ((-1) ** i * x ** (2 * i + 1)) / math.factorial(2 * i + 1)
+        sinx_ += elem_
+        i += 1
+        if abs(elem_) < accuracy:
+            break
+    return sinx_
+
+
