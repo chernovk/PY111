@@ -9,5 +9,34 @@ def binary_search(elem: int, arr: Sequence) -> Optional[int]:
     :param arr: array where element is to be found
     :return: Index of element if it's presented in the arr, None otherwise
     """
-    print(elem, arr)
-    return None
+
+    def bin_2(lb, rb):
+        mi = (lb + rb) // 2
+
+        if arr[mi] == elem:
+            if arr[mi - 1] != elem:
+                return mi
+        if lb >= rb:
+            return None
+
+        if elem > arr[rb]:
+            return None
+        if elem < arr[lb]:
+            return None
+
+        if arr[mi] > elem:
+            rb = mi - 1
+        else:
+            lb = mi + 1
+
+        return bin_2(lb, rb)
+
+    left_border = 0
+    right_border = len(arr) - 1
+
+    return bin_2(left_border, right_border)
+
+
+
+
+
